@@ -16,11 +16,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Checkout hidden tests
-        uses: actions/checkout@v4
-        with:
-          repository: BIU-CompPhys-2026/hidden-tests
-          token: ${{ secrets.HIDDEN_TESTS_TOKEN }}
-          path: .hidden-tests
+        run: |
+          git clone --depth 1 https://x-access-token:${{ secrets.HIDDEN_TESTS_TOKEN }}@github.com/BIU-CompPhys-2026/hidden-tests.git .hidden-tests
 
       - name: Set up Python
         uses: actions/setup-python@v5
